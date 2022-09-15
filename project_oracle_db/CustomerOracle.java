@@ -14,6 +14,7 @@ public class CustomerOracle {
 	private String user_id;
 	private String user_password;
 	
+	//오라클에 접속하기 위한 생성자
 	public CustomerOracle() {
 		
 		this.oracle_url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -37,6 +38,7 @@ public class CustomerOracle {
 		}
 	}
 	
+	//데이터베이스 전체 목록을 출력하는 메소드
 	void run_sql() {
 		String query = "SELECT * FROM CUSTOMER_DB";
 		int data_num = 0;
@@ -81,6 +83,7 @@ public class CustomerOracle {
 		}
 	}
 	
+	//데이터베이스에서 입력한 ID나 핸드폰 번호에 해당하는 회원 정보를 출력해주는 메소드
 	void search_sql(boolean checkId_Or_CellPhoneNumber, String Id_Or_CellPhoneNumber) {
 		Calendar current = Calendar.getInstance();
 		
@@ -134,6 +137,7 @@ public class CustomerOracle {
 		}
 	}
 	
+	//회원 정보를 데이터베이스에 저장하기 위한 메소드
 	void insert_sql(String unique_id, int pass_word, String person_name, String gender, String date_of_birth, String phone_number, String address, String cell_phone_number, String e_mail, String nikname, String wedding_anniversary) {
 		String query = "INSERT INTO CUSTOMER_DB(UNIQUE_ID, PW, PERSON_NAME, GENDER, DATE_OF_BIRTH, PHONE_NUMBER, ADDRESS, CELL_PHONE_NUMBER, E_MAIL, NICKNAME, WEDDING_ANNIVERSARY) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement preparedStatement = null;
@@ -162,6 +166,7 @@ public class CustomerOracle {
 		}
 	}
 	
+	//데이터베이스에 있는 회원 정보 중에서 입력받은 ID나 핸드폰 번호에 해당하는 데이터를 삭제하기 위한 메소드
 	void delete_sql(boolean checkId_Or_CellPhoneNumber, String Id_Or_CellPhoneNumber) {
 		String query = null;
 		PreparedStatement preparedStatement = null;
@@ -186,6 +191,7 @@ public class CustomerOracle {
 		}
 	}
 	
+	//데이터베이스에 있는 회원 정보 중에서 입력받은 ID나 핸드폰 번호에 해당하는 데이터를 수정하기 위한 메소드
 	void update_sql(boolean checkId_Or_CellPhoneNumber, String Id_Or_CellPhoneNumber, String unique_id, int pass_word) {
 		String query = null;
 		PreparedStatement preparedStatement = null;
@@ -212,6 +218,7 @@ public class CustomerOracle {
 		}
 	}
 	
+	//데이터베이스에 중복된 데이터가 있는지확인하기 위한 메소드
 	boolean oracleCheckOverlap(int checkData, String Data) {
 		String query = "SELECT * FROM CUSTOMER_DB";
 		boolean overlapCheck = true;

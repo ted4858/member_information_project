@@ -52,9 +52,10 @@ public class Management {
 	
 	//회원 정보를 검색하기 위한 메소드
 	public void dataSearch() {
+		System.out.println(">> 1.회원들의 정보 검색");
+		
 		while(run) {
 			try {
-				System.out.println(">> 1.회원들의 정보 검색");
 				System.out.println("\n---------------------------------------------------------------------------------------------------------------------------------------------------");
 				System.out.println("\t1.전체 데이터 출력  |  2.아이디로 검색  |  3.휴대폰 번호로 검색  |  4.메인 메뉴");
 				System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------");
@@ -490,7 +491,7 @@ public class Management {
 	
 	//회원 정보를 수정하기 위한 메소드
 	public void correctionMember() {
-		System.out.println(">> 4.회원정보 수정\n");
+		System.out.println(">> 4.회원정보 수정");
 		
 		while(run) {
 			try {
@@ -526,6 +527,7 @@ public class Management {
 		run = true;
 	}
 	
+	//입력받은 아이디나 핸드폰 번호에 해당하는 회원 정보를 수정하기 위한 메소드
 	public void correctionMemberToID_Or_CellPhoneNumber(boolean id_Or_CellPhoneNumber) {
 		int checkOverlap = 0;
 		String unique_idPattern = "\\w{4,8}";
